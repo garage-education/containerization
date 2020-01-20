@@ -6,18 +6,18 @@
 %% conditions are required by law.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass{beamer}
+\documentclass[aspectratio=169,usenames,dvipsnames]{beamer}
 \input{preamble/preamble.tex}
 \frenchspacing
 \begin{document}
-\frame{\maketitle}
+	\frame{\maketitle}
 
-\AtBeginSection[]{% Print an outline at the beginning of sections
+	\AtBeginSection[]{% Print an outline at the beginning of sections
 	\begin{frame}<beamer>
 		\frametitle{Outline for Section \thesection}
 		\tableofcontents[currentsection]
-\end{frame}}
-%---------------------------------------------------------
-\input{containerization.tex}
-%---------------------------------------------------------
+	\end{frame}}
+	%---------------------------------------------------------
+	\input{containerization.tex}
+	%---------------------------------------------------------
 \end{document}
