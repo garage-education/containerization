@@ -81,16 +81,10 @@
 \begin{frame}
 	\frametitle{What is a Container?}
 	\begin{itemize}
-		\item A standardized unit of software.
-		\item A container packages up code and all its dependencies, so the application runs quickly and reliably from one computing environment to another.
-		\item A container image is a lightweight, standalone, executable package of software that includes everything needed to run an application: 
-		\begin{itemize}
-			\item code, 
-			\item runtime, 
-			\item system tools, 
-			\item system libraries 
-			\item and settings.
-		\end{itemize}
+		\item A container is an abstraction at the app layer that packages code and dependencies together as a standardized unit of software..
+		\item Multiple containers can run on the same machine and share the OS kernel with other Containers, each running as isolated processes in userspace.
+		\item Containers take up less space than VMs (container images are typically tens of MBs in size), can handle more applications, runs quickly and reliably.
+		\item A container image is apersisted, lightweight, standalone, executable package of software that includes everything needed to run an application: code, runtime, system tools, system libraries, and settings.
 	\end{itemize}
 \end{frame}
 %---------------------------------------------------------
@@ -104,18 +98,6 @@
 	
 	\centering
 	\includegraphics[width=\linewidth]{figures/docker-containerized-and-vm-transparent-bg.png}
-\end{frame}
-%---------------------------------------------------------
-
-%---------------------------------------------------------
-\subsection{Containers}
-\begin{frame}
-	\frametitle{Containers}
-	\begin{itemize}
-		\item Containers are an abstraction at the app layer that packages code and dependencies together.
-		\item Multiple containers can run on the same machine and share the OS kernel with other Containers, each running as isolated processes in userspace.
-		% \item Containers take up less space than VMs (container images are typically tens of MBs in size), can handle more applications, and require fewer VMs and Operating systems. 
-	\end{itemize}
 \end{frame}
 %---------------------------------------------------------
 
