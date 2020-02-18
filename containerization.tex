@@ -1,6 +1,6 @@
 
 %---------------------------------------------------------
-\section{Containerization}
+\section{Introduction}
 %---------------------------------------------------------
 
 %---------------------------------------------------------
@@ -18,10 +18,55 @@
 %---------------------------------------------------------
 
 %---------------------------------------------------------
+\section{Virtualization}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\subsection{Virtual Machines}
+\begin{frame}
+	\frametitle{Virtual Machines}
+	\begin{itemize}
+		\item Virtual machines (VMs) are an abstraction of physical hardware, turning one server into many servers.
+		\item The hypervisor allows multiple VMs to run on a single machine.
+		\item Each VM includes a full copy of an operating system, the application, necessary binaries, and libraries - taking up tens of GBs.
+		\item Virtual machines are
+		\begin{itemize}
+			\item portable,
+			\item reproducable,
+			\item controlled,
+			\item and can be provided upon user reuest withing minutes.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\subsection{Infrastructure as a service - IaaS}
+\begin{frame}
+	\frametitle{Infrastructure as a service - IaaS}
+	Provisioning virual machines and providing them as a service among other services (ex. networking services) by a cloud operaor is IaaS.
+	\newline
+	\begin{itemize}
+		\item Famous cloud IaaS providers
+		\begin{itemize}
+			\item AWS - EC2 [Elastic Compute Cloud].
+			\item GCP - Compute Engine.
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
+\section{Containerization}
+%---------------------------------------------------------
+
+%---------------------------------------------------------
 \subsection{Issues and motive behind containerization}
 \begin{frame}
 	\frametitle{Issues and motive behind containerization}
 	\begin{itemize}
+		\item VMs can be slow to boot.
+		\item VMs are relatively big (compared to executed software)
 		\item Containerization eliminates the quote, "it worked on my machine." (\textbf{Low risk of failing in production}).
 		\item Containerization eliminates the installation and configuration time. (\textbf{Easy and fast deployment}).
 		\item Containerization packages Software into Standardized Units for Development, Shipment, and Deployment. (\textbf{Isolation}).
@@ -63,19 +108,6 @@
 %---------------------------------------------------------
 
 %---------------------------------------------------------
-\subsection{Virtual Machines}
-\begin{frame}
-	\frametitle{Virtual Machines}
-	\begin{itemize}
-		\item Virtual machines (VMs) are an abstraction of physical hardware, turning one server into many servers.
-		\item The hypervisor allows multiple VMs to run on a single machine.
-		\item Each VM includes a full copy of an operating system, the application, necessary binaries, and libraries - taking up tens of GBs.
-		\item VMs can also be slow to boot.
-	\end{itemize}
-\end{frame}
-%---------------------------------------------------------
-
-%---------------------------------------------------------
 \subsection{Containers}
 \begin{frame}
 	\frametitle{Containers}
@@ -100,7 +132,7 @@
 %---------------------------------------------------------
 
 %---------------------------------------------------------
-\subsection{References}
+\section{References}
 \begin{frame}
 	\frametitle{References}
 	\begin{itemize}
