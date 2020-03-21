@@ -1,0 +1,41 @@
+%----------------------------------------------------------------------------------------------------------------------%
+
+
+\section{Containerization}\label{sec:containerization}
+%----------------------------------------------------------------------------------------------------------------------%
+
+\subsection{Containers}\label{subsec:containers}
+\begin{frame}{What is a Container?}
+    \begin{itemize}
+        \item A container is an abstraction at the OS layer that packages code and dependencies together as a standardized unit of software.
+        \item We can refer to container as container image since it is a self-contained piece of software that has everything in it needed to run.
+        \item Containers take up less space than VMs, runs quickly and in isolation.
+        \item A container image is a persisted, lightweight, standalone, executable package of software that includes everything needed to run an application.
+        \item Containerization eliminates infrastructure wasted resources and utilizes them.
+        \item Multiple containers can run on the same machine and share the OS kernel with other Containers, each running as isolated.
+    \end{itemize}
+\end{frame}
+
+\subsection{Container Deployment}\label{subsec:container-deployment}
+\begin{frame}{Container Deployment}
+    PICTURE GOES HERE
+\end{frame}
+
+\subsection{OS-level virtualization}\label{subsec:os-level-virtualization}
+\begin{frame}{OS-level virtualization}
+    \begin{itemize}
+        \item How containerization is possible?
+        \begin{itemize}
+            \item OS-level virtualization refers to an operating system paradigm in which the kernel allows the existence of multiple isolated user space instances.
+            \item OS-level virtualization Solutions are the container engines.
+            \item Container engine is a managed environment for deploying containerized applications.
+        \end{itemize}
+        \item User space instances have different names:
+        \begin{itemize}
+            \item Containers in \textbf{Docker} and Linux containers \textbf{LXC}.
+            \item VPS in \textbf{OpenVZ}
+            \item Virtual Kernel \textbf{DragonFly BSD}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------------------------------------%

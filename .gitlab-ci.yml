@@ -1,0 +1,9 @@
+image: blang/latex
+
+build:
+  script:
+    - cd src
+    - pdflatex -file-line-error -interaction=nonstopmode -synctex=1 -output-format=pdf -output-directory=../out containerization.tex
+  artifacts:
+    paths:
+      - "./out/containerization.pdf"
