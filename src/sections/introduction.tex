@@ -6,7 +6,7 @@
 
 \subsection{History of running a software}\label{subsec:history-of-running-a-software}
 \begin{frame}{History of running a software}
-    \begin{itemize}
+    \begin{itemize}[<+- | alert@+>]
         \item Early on, organizations ran applications on physical servers.
         \item Install or use an existing operating system.
         \item Install the tools used by your software.
@@ -17,12 +17,42 @@
 
 \subsection{Traditional Deployment}\label{subsec:traditional-deployment}
 \begin{frame}{Traditional Deployment}
-    PICTURE GOES HERE
+    \begin{tikzpicture}[
+        node/.style={
+            scale=0.75,
+            node distance=2mm,
+            rectangle,
+            draw=black,
+            thick,
+            text centered,
+            minimum height=10mm,
+            minimum width=10mm
+        }
+    ]
+        \tikzstyle{node} = [
+            scale=0.75,
+            node distance=2mm,
+            rectangle,
+            draw=black,
+            thick,
+            text centered,
+            minimum height=10mm,
+            minimum width=10mm
+        ]
+        \tikzstyle{hw} = [fill=blue!35]
+        \tikzstyle{sw} = [fill=blue!15]
+
+        \node [node, sw, text width=1.95cm] (A1) {application};
+        \node [node, sw, right = of A1, text width=1.95cm] (A2) {application};
+        \node [node, sw, right = of A2, text width=1.95cm] (A3) {application};
+        \node [node, hw, below = of A2, text width=7cm] (OS) {Operating System};
+        \node [node, hw, below = of OS, text width=7cm] (HW) {Hardware};
+    \end{tikzpicture}
 \end{frame}
 
 \subsection{Issues with traditional deployment}\label{subsec:issues-with-traditional-deployment}
 \begin{frame}{Issues with traditional deployment}
-    \begin{itemize}
+    \begin{itemize}[<+- | alert@+>]
         \item No way to define resource boundaries for applications in a physical server, and this caused resource allocation issues.
         \item Scaling issues as resources were underutilized.
         \item It was expensive for organizations to maintain many physical servers.

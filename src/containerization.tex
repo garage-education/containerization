@@ -6,6 +6,10 @@
 
 % Packages
 \usepackage[sectionpage=progressbar,progressbar=foot]{theme/beamerthememetropolis}
+\usepackage{tikz}
+
+% Libraries
+\usetikzlibrary{positioning}
 
 % Details
 \title{Containerization \& Virtualization}
@@ -17,7 +21,10 @@
 \begin{document}
     \maketitle
 
-    \tableofcontents
+    \begin{frame}{Table of contents}
+        \setbeamertemplate{section in toc}[sections numbered]
+        \tableofcontents[hideallsubsections]
+    \end{frame}
 
     \include{sections/introduction}
     \include{sections/virtualization}

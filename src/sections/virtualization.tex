@@ -6,7 +6,7 @@
 
 \subsection{Virtual Machines}\label{subsec:virtual-machines}
 \begin{frame}{Virtual Machines}
-    \begin{itemize}
+    \begin{itemize}[<+- | alert@+>]
         \item Virtual machines (VMs) are an abstraction of physical hardware.
         \item It allows you to run multiple Virtual Machines (VMs) on a single physical server's CPU\@.
         \item Each VM includes a full copy of an operating system, the application, necessary binaries, and libraries - taking up tens of GBs.
@@ -26,19 +26,28 @@
 
 \subsection{Hypervisor}\label{subsec:hypervisor}
 \begin{frame}{Hypervisor}
-    \begin{itemize}
+    \begin{itemize}[<+- | alert@+>]
         \item How virtualization is possible?
-        \begin{itemize}
+        \begin{itemize}[<+- | alert@+>]
             \item A hypervisor is computer software, firmware or hardware that creates and runs virtual machines.
             \item The hypervisor allows multiple VMs to run on a single machine.
         \end{itemize}
         \item It is usually classified to 2 types:
-        \begin{itemize}
-            \item Type-1, native or bare-metal hypervisors .
-            \item Examples: VMware ESX and Citrix Xen servers.
-            \item Type-2 or hosted hypervisors
-            \item Examples: VMware player and VirtualBox.
-        \end{itemize}
+        \begin{columns}[T,onlytextwidth]
+            \column{0.5\textwidth}
+            \begin{itemize}
+                \item Type-1, native or bare-metal hypervisors.
+                \item Type-2 or hosted hypervisors
+            \end{itemize}
+            \column{0.5\textwidth}
+            \metroset{block=fill}
+            \begin{block}{Examples}
+                \begin{itemize}
+                    \item Type-1: VMware ESX and Citrix Xen servers.
+                    \item Type-2: VMware player and VirtualBox.
+                \end{itemize}
+            \end{block}
+        \end{columns}
         \item PICTURES GOES HERE
     \end{itemize}
 \end{frame}
