@@ -5,26 +5,26 @@
 \documentclass[aspectratio=169]{beamer}
 %%% TOC
 %%% 1. Introduction & What is the problem with the current deployment process? Why do we need to enhance it?
-%%% 2. What is virtualization? vistual vs physical? slide number 6 to be splitted.
+%%% 2. What is virtualization? vistual vs physical? slide number 5 to be splitted.
 %%% What do we mean by islolation? What is the different type of virtualization linux? win? mac?
 %%% 3. What is Hypervisor? Why do we need it? Is there any difference between it in windows, linux, and mac?
 %%% Does the same concept implemented into the same why in all OSs?
 %%% 4. Containerization? What is containerization? Containerization Historical thoery? Where can we find it? what is the relation between it and (VM, OS, Hardware)?
 %%% Can we have containerization for windows and mac and linux, if no why?
-%%% Why do we need containerization with CICD? Why it is important?
 %%% What do you mean by kernal?
 % Packages
 \usepackage[sectionpage=progressbar,progressbar=foot]{theme/beamerthememetropolis}
 \usepackage{tikz}
+
+% Libraries
+\usetikzlibrary{positioning,shapes,backgrounds,fit}
+
+% Global Settings
 \tikzset{
     invisible/.style={opacity=0},
     visible on/.style={alt={#1{}{invisible}}},
-    alt/.code args={<#1>#2#3}{%
-        \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
-    },
+    alt/.code args={<#1>#2#3}{\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}} % \pgfkeysalso doesn't change the path
 }
-% Libraries
-\usetikzlibrary{positioning}
 
 % Details
 \title{Containerization \& Virtualization}
