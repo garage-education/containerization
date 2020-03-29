@@ -3,7 +3,7 @@ image: aergus/latex
 build:
   script:
     - cd src
-    - pdflatex -interaction=nonstopmode -synctex=1 -output-format=pdf -output-directory=../out containerization.tex
+    - latexmk -pdf containerization.tex  -output-directory=../out -interaction=nonstopmode -synctex=1
   artifacts:
     paths:
       - "./out/containerization.pdf"
