@@ -1,39 +1,106 @@
 %----------------------------------------------------------------------------------------------------------------------%
 
 
-\section{Popular Questions}\label{sec:popular-questions}
+\section{Summary and Popular Questions}\label{sec:popular-questions}
 %----------------------------------------------------------------------------------------------------------------------%
+
+\subsection{Summary}\label{subsec:summary}
+\begin{frame}
+    \begin{itemize}[<+- | alert@+>]
+        \item The word virtualization applies to hardware and operating system.
+        \item Hardware virtualization produces virtual machines.
+        \item Operating system virtualization produces containers.
+    \end{itemize}
+\end{frame}
 
 \subsection{Why Containers are more popular?}\label{subsec:containers-are-more-popular}
 \begin{frame}{Why Containers are more popular?}
     \begin{itemize}[<+- | alert@+>]
-        \item Resource isolation: predictable application performance.
-        \item Resource utilization: high efficiency and density.
+        \item Containerization gives us better resource isolation with predictable application performance.
+        \item Containerization gives us better resource utilization with high efficiency and density.
+        \item They are loosely coupled, distributed, elastic, liberated micro-services.
+        \item Environmental consistency across development, testing, and production \textbf{"It worked on my machine."}
         \item Agile application creation and deployment.
-        \item Continuous development, integration, and deployment.
-        \item Loosely coupled, distributed, elastic, liberated micro-services.
-        \item Environmental consistency across development, testing, and production.
     \end{itemize}
 \end{frame}
 
-\subsection{What is hybrid container architecture?}\label{subsec:hybrid-container-architecture?}
+\subsection{What is hybrid container architecture?}\label{subsec:what-is-hybrid-container-architecture?}
 \begin{frame}{What is hybrid container architecture?}
     \begin{itemize}[<+- | alert@+>]
         \item A hybrid container architecture is an architecture combining virtualization on both hardware and OS levels.
         \item Example: The container engine and associated containers execute on top of a virtual machine.
         \item Use of a hybrid container architecture is also known as hybrid containerization.
-        \item PICTURES GOES HERE
     \end{itemize}
 \end{frame}
 
+\subsection{Hybrid container architecture}\label{subsec:hybrid-container-architecture}
+\begin{frame}{Hybrid container architecture}
+    \begin{figure}[!t]
+        \raggedright
+        \begin{tikzpicture}[
+            node/.style={
+                scale=0.60,
+                node distance = 2mm,
+                rectangle,
+                draw = black,
+                thick,
+                text centered,
+                minimum height = 10mm,
+                minimum width = 10mm
+            },
+            txt/.style = {
+                scale = 0.60,
+                node distance = 2mm,
+                rectangle,
+                text centered,
+                minimum height = 2mm,
+                minimum width = 10mm
+            }
+        ]
+            \tikzstyle{layer} = [inner sep=1mm, draw=black, thick, fill= gray!30]
+            \tikzstyle{vm} = [fill = gray!30]
+            \tikzstyle{hw} = [fill = blue!35]
+            \tikzstyle{sw} = [fill = blue!15]
+            \tikzstyle{hv} = [fill = blue!5 ]
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % Hybrid container architecture %
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \node [node, hw, text width=10cm, yshift=-2mm, visible on=<1->] (HW) {Hardware};
+            \node [node, hv, above = of HW, text width=10cm, yshift=-2mm, visible on=<2->] (HV1) {Hypervisor};
+            \node [node, sw, above = of HV1, text width=10cm, yshift=-2mm, visible on=<3->] (OS1) {Host Operating System};
+            % Virtual Machine 1
+            \node [txt , vm, above = of OS1, text width=4.35cm, xshift = -2.60cm, visible on=<4->] (VM1) {Virtual Machine};
+            \node [node, sw, above = of VM1, text width=4.45cm, yshift=-2mm, visible on=<5->] (OS2) {Guest OS};
+            \node [node, hv, above = of OS2, text width=4.45cm, yshift=-2mm, visible on=<6->] (HV2) {Container Runtime};
+            \node [node , sw, above = of HV2, text width=1.13cm, yshift=-2mm, xshift = -1.65cm, visible on=<7->] (CO1) {C1};
+            \node [node , sw, right = of CO1, text width=1.13cm, xshift = -1mm, visible on=<8->] (CO2) {C2};
+            \node [node , sw, right = of CO2, text width=1.13cm, xshift = -1mm, visible on=<9->] (CO3) {C3};
+            \begin{scope}[on background layer]
+                \node [fit = (VM1) (OS2) (HV2) (CO1) (CO2) (CO3), layer, visible on=<4->] {};
+            \end{scope}
+            % Virtual Machine 2
+            \node [txt , right = of VM1, text width=4.45cm, xshift = 2mm, visible on=<10->] (VM2) {Virtual Machine};
+            \node [node, sw, above = of VM2, text width=4.45cm, yshift=-2mm, visible on=<10->] (OS3) {Guest OS};
+            \node [node, hv, above = of OS3, text width=4.45cm, yshift=-2mm, visible on=<10->] (HV3) {Container Runtime};
+            \node [node , sw, above = of HV3, text width=1.13cm, yshift=-2mm, xshift = -1.65cm, visible on=<10->] (CO4) {C1};
+            \node [node , sw, right = of CO4, text width=1.13cm, xshift = -1mm, visible on=<10->] (CO5) {C2};
+            \node [node , sw, right = of CO5, text width=1.13cm, xshift = -1mm, visible on=<10->] (CO6) {C3};
+            \begin{scope}[on background layer]
+                \node [fit = (VM2) (OS3) (HV3) (CO4) (CO5) (CO6), layer, visible on=<10->] {};
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Hybrid container architecture}
+    \end{figure}
+\end{frame}
 
 \subsection{Do windows have native containers?}\label{subsec:windows-containers}
 \begin{frame}{Do windows have native containers?}
     \begin{itemize}[<+- | alert@+>]
-        \item You can have windows native containers but not linux native containers yet.
-        \item Microsoft native hypervisor solution is Hyper-V\@.
-        \item Using Hyper-V Microsoft supports running VMs natively on Windows, example: ubuntu on windows (WSL).
-        \item Microsoft is working on OS-level virtualization solution to run linux native containers.
+        \item You can have native windows containers but not Linux native containers yet.
+        \item Microsoft's native hypervisor solution is Hyper-V\@.
+        \item Using Hyper-V Microsoft supports running VMs natively on Windows, for example, Ubuntu on Windows (WSL).
+        \item Microsoft is working on the OS-level virtualization solution to run Linux native containers.
     \end{itemize}
 \end{frame}
 %----------------------------------------------------------------------------------------------------------------------%

@@ -7,30 +7,131 @@
 \subsection{Containers}\label{subsec:containers}
 \begin{frame}{What is a Container?}
     \begin{itemize}[<+- | alert@+>]
+        \item The process of virtualizing the operating system produces containers.
+        \item Container is a virtual operating system.
         \item A container is an abstraction at the OS layer that packages code and dependencies together as a standardized unit of software.
-        \item We can refer to container as container image since it is a self-contained piece of software that has everything in it needed to run.
-        \item Containers take up less space than VMs, runs quickly and in isolation.
-        \item A container image is a persisted, lightweight, standalone, executable package of software that includes everything needed to run an application.
+        \item Containers take up less space than VMs, boots quickly, and in isolation.
         \item Containerization eliminates infrastructure wasted resources and utilizes them.
-        \item Multiple containers can run on the same machine and share the OS kernel with other Containers, each running as isolated.
     \end{itemize}
 \end{frame}
 
 \subsection{Container Deployment}\label{subsec:container-deployment}
 \begin{frame}{Container Deployment}
-    PICTURE GOES HERE
+    \begin{figure}[!t]
+        \raggedright
+        \begin{tikzpicture}[
+            node/.style={
+                scale=0.40,
+                node distance = 2mm,
+                rectangle,
+                draw = black,
+                thick,
+                text centered,
+                minimum height = 10mm,
+                minimum width = 10mm
+            },
+            txt/.style = {
+                scale = 0.40,
+                node distance = 2mm,
+                rectangle,
+                text centered,
+                minimum height = 2mm,
+                minimum width = 10mm
+            }
+        ]
+            \tikzstyle{layer} = [inner sep=1mm, draw=black, thick, fill= gray!30]
+            \tikzstyle{vm} = [fill = gray!30]
+            \tikzstyle{hw} = [fill = blue!35]
+            \tikzstyle{sw} = [fill = blue!15]
+            \tikzstyle{hv} = [fill = blue!5 ]
+            \tikzstyle{ar} = [fill = black  ]
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%
+            % Traditional Deployment %
+            %%%%%%%%%%%%%%%%%%%%%%%%%%
+            \node [node, sw, text width=1.82cm, visible on=<1->] (A11) {application};
+            \node [node, sw, right = of A11, text width=1.82cm, visible on=<1->] (A12) {application};
+            \node [node, sw, right = of A12, text width=1.82cm, visible on=<1->] (A13) {application};
+            \node [node, hw, below = of A12, text width=7cm, visible on=<1->] (OS1) {Operating System};
+            \node [node, hw, below = of OS1, text width=7cm, visible on=<1->] (HW1) {Hardware};
+
+            %%%%%%%%%
+            % ARROW %
+            %%%%%%%%%
+            \node [node, ar, right = of OS1, text width=1cm, visible on=<1->, single arrow] (AR1) {};
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % Virtualization Deployment %
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \node [node, hw, right = of AR1, text width=7cm, visible on=<1->] (OS2) {Operating System};
+            \node [node, hw, below = of OS2, text width=7cm, visible on=<1->] (HW2) {Hardware};
+            \node [node, hv, above = of OS2, text width=7cm, visible on=<1->] (HV1) {Hypervisor};
+            % Virtual Machine 1
+            \node [txt , vm, above = of HV1, text width=2.75cm, xshift = -1.8cm, visible on=<1->] (VM1) {Virtual Machine};
+            \node [node, hw, above = of VM1, text width=2.75cm, yshift=-2mm, visible on=<1->] (OS3) {OS};
+            \node [node, hw, above = of OS3, text width=2.75cm, visible on=<1->] (BL1) {Bin/Lib};
+            \node [node, sw, above = of BL1, text width=0.96cm, xshift = -0.9cm, visible on=<1->] (A21) {app};
+            \node [node, sw, right = of A21, text width=0.96cm, visible on=<1->] (A22) {app};
+            \begin{scope}[on background layer]
+                \node [fit = (VM1) (OS3) (BL1) (A21) (A22), layer, visible on=<1->] {};
+            \end{scope}
+            % Virtual Machine 2
+            \node [txt , right = of VM1, text width=2.75cm, xshift = 1mm, visible on=<1->] (VM2) {Virtual Machine};
+            \node [node, hw, above = of VM2, text width=2.75cm, yshift=-2mm, visible on=<1->] (OS4) {OS};
+            \node [node, hw, above = of OS4, text width=2.75cm, visible on=<1->] (BL2) {Bin/Lib};
+            \node [node, sw, above = of BL2, text width=0.96cm, xshift = -0.9cm, visible on=<1->] (A23) {app};
+            \node [node, sw, right = of A23, text width=0.96cm, visible on=<1->] (A24) {app};
+            \begin{scope}[on background layer]
+                \node [fit = (VM2) (OS4) (BL2) (A23) (A24), layer, visible on=<1->] {};
+            \end{scope}
+
+            %%%%%%%%%
+            % ARROW %
+            %%%%%%%%%
+            \node [node, ar, right = of OS2, text width=1cm, visible on=<1->, single arrow] (AR2) {};
+
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            % Containerization Deployment %
+            %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+            \node [node, hw, right = of AR2, text width=7cm, visible on=<3->] (OS3) {Operating System};
+            \node [node, hw, below = of OS3, text width=7cm, visible on=<2->] (HW3) {Hardware};
+            \node [node, hv, above = of OS3, text width=7cm, visible on=<4->] (HV2) {Container Runtime};
+            % Container 1
+            \node [txt , vm, above = of HV2, text width=1.58cm, xshift = -2.45cm, visible on=<5->] (VM3) {Container};
+            \node [node, hw, above = of VM3, text width=1.58cm, yshift=-2mm, visible on=<6->] (BL3) {Bin/Lib};
+            \node [node, sw, above = of BL3, text width=1.58cm, visible on=<7->] (A31) {app};
+            \begin{scope}[on background layer]
+                \node [fit = (VM3) (BL3) (A31), layer, visible on=<5->] {};
+            \end{scope}
+            % Container 2
+            \node [txt , vm, right = of VM3, text width=1.58cm, xshift = 1mm, visible on=<8->] (VM4) {Container};
+            \node [node, hw, above = of VM4, text width=1.58cm, yshift = -2mm, visible on=<8->] (BL4) {Bin/Lib};
+            \node [node, sw, above = of BL4, text width=1.58cm, visible on=<8->] (A32) {app};
+            \begin{scope}[on background layer]
+                \node [fit = (VM4) (BL4) (A32), layer, visible on=<8->] {};
+            \end{scope}
+            % Container 3
+            \node [txt , vm, right = of VM4, text width=1.58cm, xshift = 1mm, visible on=<9->] (VM5) {Container};
+            \node [node, hw, above = of VM5, text width=1.58cm, yshift = -2mm, visible on=<9->] (BL5) {Bin/Lib};
+            \node [node, sw, above = of BL5, text width=1.58cm, visible on=<9->] (A33) {app};
+            \begin{scope}[on background layer]
+                \node [fit = (VM5) (BL5) (A33), layer, visible on=<9->] {};
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Containerization Deployment}
+    \end{figure}
 \end{frame}
 
 \subsection{OS-level virtualization}\label{subsec:os-level-virtualization}
 \begin{frame}{OS-level virtualization}
     \begin{itemize}[<+- | alert@+>]
-        \item How containerization is possible?
+        \item How is containerization possible?
         \begin{itemize}
-            \item OS-level virtualization refers to an operating system paradigm in which the kernel allows the existence of multiple isolated user space instances.
-            \item OS-level virtualization Solutions are the container engines.
-            \item Container engine is a managed environment for deploying containerized applications.
+            \item OS-level virtualization refers to an operating system paradigm in which the operating system allows the existence of multiple isolated user-space instances (containers).
+            \item OS-level virtualization solutions are the container engines.
+            \item A container engine is a managed environment for deploying containerized applications.
         \end{itemize}
-        \item User space instances have different names:
+        \item User-space instances have different names
         \begin{itemize}
             \item Containers in \textbf{Docker} and Linux containers \textbf{LXC}.
             \item VPS in \textbf{OpenVZ}

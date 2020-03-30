@@ -7,105 +7,169 @@
 \subsection{Virtual Machines}\label{subsec:virtual-machines}
 \begin{frame}{Virtual Machines}
     \begin{itemize}[<+- | alert@+>]
-        \item Virtual machines (VMs) are an abstraction of physical hardware.
-        \item It allows you to run multiple Virtual Machines (VMs) on a single physical server's CPU\@.
-        \item Each VM includes a full copy of an operating system, the application, necessary binaries, and libraries - taking up tens of GBs.
-        \item Virtualization allows applications to be isolated between VMs.
-        \item Virtualization provides a level of security as the information of one application cannot be freely accessed by another application.
-        \item Virtualization allows better utilization of resources in a physical server.
-        \item Virtualization allows better scalability because an application can be added or updated easily,
-        \item Virtualization reduces hardware costs, and much more.
-        \item Virtualization can present a set of physical resources as a cluster of disposable virtual machines.
+        \item Virtualizing hardware produces virtual machines (VMs).
+        \item Virtualization allows you to run multiple VMs on a single physical server.
+        Each VM includes a full copy of an operating system, the application, necessary binaries, and libraries - taking up tens of GBs.
+        \item Virtualization allows more effortless adding and updating of applications that solve the scalability issue.
+        \item Virtualization allows better utilization of resources.
+        \item Virtualization isolates applications between VMs.
     \end{itemize}
 \end{frame}
 
 \subsection{Virtualized Deployment}\label{subsec:virtualized-deployment}
 \begin{frame}{Virtualized Deployment}
-    \begin{tikzpicture}[
-        node/.style={
-            scale=0.75,
-            node distance = 2mm,
-            rectangle,
-            draw = black,
-            thick,
-            text centered,
-            minimum height = 10mm,
-            minimum width = 10mm
-        },
-        txt/.style = {
-            scale = 0.75,
-            node distance = 2mm,
-            rectangle,
-            text centered,
-            minimum height = 2mm,
-            minimum width = 10mm
-        }
-    ]
-        \tikzstyle{layer} = [inner sep=1mm, draw=black, thick, fill= gray!30]
-        \tikzstyle{vm} = [fill = gray!30]
-        \tikzstyle{hw} = [fill = blue!35]
-        \tikzstyle{sw} = [fill = blue!15]
-        \tikzstyle{hv} = [fill = blue!5 ]
-        \tikzstyle{ar} = [fill = black  ]
+    \begin{figure}[!t]
+        \raggedright
+        \begin{tikzpicture}[
+            node/.style={
+                scale=0.55,
+                node distance = 2mm,
+                rectangle,
+                draw = black,
+                thick,
+                text centered,
+                minimum height = 10mm,
+                minimum width = 10mm
+            },
+            txt/.style = {
+                scale = 0.55,
+                node distance = 2mm,
+                rectangle,
+                text centered,
+                minimum height = 2mm,
+                minimum width = 10mm
+            }
+        ]
+            \tikzstyle{layer} = [inner sep=1mm, draw=black, thick, fill= gray!30]
+            \tikzstyle{vm} = [fill = gray!30]
+            \tikzstyle{hw} = [fill = blue!35]
+            \tikzstyle{sw} = [fill = blue!15]
+            \tikzstyle{hv} = [fill = blue!5 ]
+            \tikzstyle{ar} = [fill = black  ]
 
-        \node [node, sw, text width=1.95cm, visible on=<1->] (A11) {application};
-        \node [node, sw, right = of A11, text width=1.95cm, visible on=<1->] (A12) {application};
-        \node [node, sw, right = of A12, text width=1.95cm, visible on=<1->] (A13) {application};
-        \node [node, hw, below = of A12, text width=7cm, visible on=<1->] (OS1) {Operating System};
-        \node [node, hw, below = of OS1, text width=7cm, visible on=<1->] (HW1) {Hardware};
+            \node [node, sw, text width=1.90cm, visible on=<1->] (A11) {application};
+            \node [node, sw, right = of A11, text width=1.90cm, visible on=<1->] (A12) {application};
+            \node [node, sw, right = of A12, text width=1.90cm, visible on=<1->] (A13) {application};
+            \node [node, hw, below = of A12, text width=7cm, visible on=<1->] (OS1) {Operating System};
+            \node [node, hw, below = of OS1, text width=7cm, visible on=<1->] (HW1) {Hardware};
 
-        \node [node, ar, right = of OS1, text width=1cm, visible on=<2->, single arrow] (AR1) {};
+            \node [node, ar, right = of OS1, text width=1cm, visible on=<2->, single arrow] (AR1) {};
 
-        \node [node, hw, right = of AR1, text width=7cm, visible on=<4->] (OS2) {Operating System};
-        \node [node, hw, below = of OS2, text width=7cm, visible on=<3->] (HW2) {Hardware};
-        \node [node, hv, above = of OS2, text width=7cm, visible on=<5->] (HV1) {Hypervisor};
-        % Virtual Machine 2
-        \node [txt , vm, above = of HV1, text width=3.0cm, xshift = -1.8cm, visible on=<6->] (VM1) {Virtual Machine};
-        \node [node, hw, above = of VM1, text width=3.0cm, yshift=-2mm, visible on=<7->] (OS3) {OS};
-        \node [node, hw, above = of OS3, text width=3.0cm, visible on=<8->] (BL1) {Bin/Lib};
-        \node [node, sw, above = of BL1, text width=1.23cm, xshift = -0.9cm, visible on=<9->] (A21) {app};
-        \node [node, sw, right = of A21, text width=1.23cm, visible on=<10->] (A22) {app};
-        % Virtual Machine 2
-        \node [txt , right = of VM1, text width=3.0cm, xshift = 1mm, visible on=<11->] (VM2) {Virtual Machine};
-        \node [node, hw, above = of VM2, text width=3.0cm, yshift=-2mm, visible on=<11->] (OS4) {OS};
-        \node [node, hw, above = of OS4, text width=3.0cm, visible on=<11->] (BL2) {Bin/Lib};
-        \node [node, sw, above = of BL2, text width=1.23cm, xshift = -0.9cm, visible on=<11->] (A23) {app};
-        \node [node, sw, right = of A23, text width=1.23cm, visible on=<11->] (A24) {app};
+            \node [node, hw, right = of AR1, text width=7cm, visible on=<4->] (OS2) {Operating System};
+            \node [node, hw, below = of OS2, text width=7cm, visible on=<3->] (HW2) {Hardware};
+            \node [node, hv, above = of OS2, text width=7cm, visible on=<5->] (HV1) {Hypervisor};
+            % Virtual Machine 2
+            \node [txt , vm, above = of HV1, text width=2.92cm, xshift = -1.8cm, visible on=<6->] (VM1) {Virtual Machine};
+            \node [node, hw, above = of VM1, text width=2.92cm, yshift=-2mm, visible on=<7->] (OS3) {OS};
+            \node [node, hw, above = of OS3, text width=2.92cm, visible on=<8->] (BL1) {Bin/Lib};
+            \node [node, sw, above = of BL1, text width=1.13cm, xshift = -0.9cm, visible on=<9->] (A21) {app};
+            \node [node, sw, right = of A21, text width=1.13cm, visible on=<10->] (A22) {app};
+            % Virtual Machine 2
+            \node [txt , right = of VM1, text width=2.92cm, xshift = 1mm, visible on=<11->] (VM2) {Virtual Machine};
+            \node [node, hw, above = of VM2, text width=2.92cm, yshift=-2mm, visible on=<11->] (OS4) {OS};
+            \node [node, hw, above = of OS4, text width=2.92cm, visible on=<11->] (BL2) {Bin/Lib};
+            \node [node, sw, above = of BL2, text width=1.13cm, xshift = -0.9cm, visible on=<11->] (A23) {app};
+            \node [node, sw, right = of A23, text width=1.13cm, visible on=<11->] (A24) {app};
 
-        \begin{scope}[on background layer]
-            \node [fit = (VM1) (OS3) (BL1) (A21) (A22), layer, visible on=<6->] {};
-        \end{scope}
-        \begin{scope}[on background layer]
-            \node [fit = (VM2) (OS4) (BL2) (A23) (A24), layer, visible on=<11->] {};
-        \end{scope}
-    \end{tikzpicture}
+            \begin{scope}[on background layer]
+                \node [fit = (VM1) (OS3) (BL1) (A21) (A22), layer, visible on=<6->] {};
+            \end{scope}
+            \begin{scope}[on background layer]
+                \node [fit = (VM2) (OS4) (BL2) (A23) (A24), layer, visible on=<11->] {};
+            \end{scope}
+        \end{tikzpicture}
+        \caption{Virtualization Deployment}
+    \end{figure}
 \end{frame}
 
 \subsection{Hypervisor}\label{subsec:hypervisor}
 \begin{frame}{Hypervisor}
     \begin{itemize}[<+- | alert@+>]
-        \item How virtualization is possible?
-        \begin{itemize}[<+- | alert@+>]
+        \item How is virtualization possible?
+        \begin{itemize}
             \item A hypervisor is computer software, firmware or hardware that creates and runs virtual machines.
             \item The hypervisor allows multiple VMs to run on a single machine.
         \end{itemize}
-        \item It is usually classified to 2 types:
-        \begin{columns}[T,onlytextwidth]
-            \column{0.5\textwidth}
-            \begin{itemize}
-                \item Type-1, native or bare-metal hypervisors.
-                \item Type-2 or hosted hypervisors
-            \end{itemize}
-            \column{0.5\textwidth}
-            \metroset{block=fill}
-            \begin{block}{Examples}
-                \begin{itemize}
-                    \item Type-1: VMware ESX and Citrix Xen servers.
-                    \item Type-2: VMware player and VirtualBox.
-                \end{itemize}
-            \end{block}
-        \end{columns}
-        \item PICTURES GOES HERE
+        \item The hypervisor has 2 types:
     \end{itemize}
+\end{frame}
+
+\subsection{Type 1 Hypervisor}\label{subsec:type-1-hypervisor}
+\begin{frame}{Type 1 Hypervisor}
+    Type-1, native, or bare-metal hypervisors.
+    \pause
+    \metroset{block=fill}
+    \begin{block}{Examples}
+        \begin{itemize}
+            \item Type-1: VMware ESX and Citrix Xen servers.
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{figure}[!t]
+        \raggedright
+        \begin{tikzpicture}[
+            node/.style={
+                scale=0.75,
+                node distance=2mm,
+                rectangle,
+                draw=black,
+                thick,
+                text centered,
+                minimum height=10mm,
+                minimum width=10mm
+            }
+        ]
+            \tikzstyle{hw} = [fill = blue!35]
+            \tikzstyle{sw} = [fill = blue!15]
+            \tikzstyle{hv} = [fill = blue!5 ]
+
+            \node [node, sw, text width=1.95cm, visible on=<5->] (A1) {Guest OS};
+            \node [node, sw, right = of A1, text width=1.95cm, visible on=<6->] (A2) {Guest OS};
+            \node [node, sw, right = of A2, text width=1.95cm, visible on=<7->] (A3) {Guest OS};
+            \node [node, hv, below = of A2, text width=7cm, visible on=<4->] (HV) {Hypervisor};
+            \node [node, hw, below = of HV, text width=7cm, visible on=<3->] (HW) {Hardware};
+        \end{tikzpicture}
+        \caption{Type 1, native, or bare-metal hypervisors}
+    \end{figure}
+\end{frame}
+
+\subsection{Type 2 Hypervisor}\label{subsec:type-2-hypervisor}
+\begin{frame}{Type 2 Hypervisor}
+    Type-2, or hosted hypervisors.
+    \pause
+    \metroset{block=fill}
+    \begin{block}{Examples}
+        \begin{itemize}
+            \item Type-2: VMware player and VirtualBox.
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{figure}[!t]
+        \raggedright
+        \begin{tikzpicture}[
+            node/.style={
+                scale=0.75,
+                node distance=2mm,
+                rectangle,
+                draw=black,
+                thick,
+                text centered,
+                minimum height=10mm,
+                minimum width=10mm
+            }
+        ]
+            \tikzstyle{hw} = [fill = blue!35]
+            \tikzstyle{sw} = [fill = blue!15]
+            \tikzstyle{hv} = [fill = blue!5 ]
+
+            \node [node, sw, text width=1.95cm, visible on=<6->] (A1) {Guest OS};
+            \node [node, sw, right = of A1, text width=1.95cm, visible on=<7->] (A2) {Guest OS};
+            \node [node, sw, right = of A2, text width=1.95cm, visible on=<8->] (A3) {Guest OS};
+            \node [node, hv, below = of A2, text width=7cm, visible on=<5->] (HV) {Hypervisor};
+            \node [node, hw, below = of HV, text width=7cm, visible on=<4->] (OS) {Host Operating System};
+            \node [node, hw, below = of OS, text width=7cm, visible on=<3->] (HW) {Hardware};
+        \end{tikzpicture}
+        \caption{Type 2, or Hosted Hypervisor}
+    \end{figure}
 \end{frame}
 %----------------------------------------------------------------------------------------------------------------------%

@@ -15,16 +15,18 @@
 % Packages
 \usepackage[sectionpage=progressbar,progressbar=foot]{theme/beamerthememetropolis}
 \usepackage{tikz}
+\usepackage{caption}
 
 % Libraries
-\usetikzlibrary{positioning,shapes,backgrounds,fit}
+\usetikzlibrary{positioning, shapes, backgrounds, fit}
 
 % Global Settings
 \tikzset{
-    invisible/.style={opacity=0},
-    visible on/.style={alt={#1{}{invisible}}},
-    alt/.code args={<#1>#2#3}{\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}} % \pgfkeysalso doesn't change the path
+    invisible/.style = {opacity=0},
+    visible on/.style = {alt={#1{}{invisible}}},
+    alt/.code args = {<#1>#2#3}{\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}} % \pgfkeysalso doesn't change the path.
 }
+\captionsetup{justification = raggedright, singlelinecheck = false}
 
 % Details
 \title{Containerization \& Virtualization}
