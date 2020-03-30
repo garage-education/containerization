@@ -3,20 +3,12 @@
 
 % Preamble
 \documentclass[aspectratio=169]{beamer}
-%%% TOC
-%%% 1. Introduction & What is the problem with the current deployment process? Why do we need to enhance it?
-%%% 2. What is virtualization? vistual vs physical? slide number 5 to be splitted.
-%%% What do we mean by islolation? What is the different type of virtualization linux? win? mac?
-%%% 3. What is Hypervisor? Why do we need it? Is there any difference between it in windows, linux, and mac?
-%%% Does the same concept implemented into the same why in all OSs?
-%%% 4. Containerization? What is containerization? Containerization Historical thoery? Where can we find it? what is the relation between it and (VM, OS, Hardware)?
-%%% Can we have containerization for windows and mac and linux, if no why?
-%%% What do you mean by kernal?
 % Packages
 \usepackage[sectionpage=progressbar,progressbar=foot]{theme/beamerthememetropolis}
 \usepackage{tikz}
 \usepackage{caption}
-
+\usepackage{fontawesome}
+\setbeamersize{text margin left=3mm,text margin right=3.6cm}
 % Libraries
 \usetikzlibrary{positioning, shapes, backgrounds, fit}
 
@@ -29,13 +21,14 @@
 \captionsetup{justification = raggedright, singlelinecheck = false}
 
 % Details
-\title{Containerization \& Virtualization}
-\date{\today}
-\author{Ahmed Hassanien}
-\institute{Garage Education}
-
+%\title{Containerization \& Virtualization}
+%\date{\today}
+%\author{Ahmed Hassanien}
+%\institute{Garage Education}
+\input{./front_page.tex}
 % Document
 \begin{document}
+
     \maketitle
 
     \begin{frame}{Table of contents}
