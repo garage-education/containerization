@@ -11,6 +11,8 @@
 \usepackage{tikz}
 \usepackage{caption}
 \usepackage{fontawesome}
+\usepackage{import}
+\usepackage{hyperref}
 
 % Libraries
 \usetikzlibrary{positioning, shapes, backgrounds, fit}
@@ -27,7 +29,7 @@
 % Details
 \title[Containerization \& Virtualization]{Containerization \& Virtualization}
 \subtitle{\textit{Toward an Agile Infrastructure}}
-\input{./common/front_page.tex}
+\input{common/front_page.tex}
 
 % Document
 \begin{document}
@@ -39,9 +41,9 @@
         \tableofcontents[hideallsubsections]
     \end{frame}
 
-    \include{containerization/sections/introduction}
-    \include{containerization/sections/virtualization}
-    \include{containerization/sections/containerization}
-    \include{containerization/sections/questions}
-    \include{containerization/sections/references}
+    \input{containerization/sections/introduction}
+    \input{containerization/sections/virtualization}
+    \input{containerization/sections/containerization}
+    \input{containerization/sections/questions}
+    \input{containerization/sections/references}
 \end{document}
