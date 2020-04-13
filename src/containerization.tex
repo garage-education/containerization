@@ -2,17 +2,21 @@
 %! Date = 3/21/20
 
 % Preamble
-\documentclass[aspectratio=169]{beamer}
+\documentclass[
+    handout, % Comment to release the presentation
+    aspectratio=169
+]{beamer}
 % Packages
 \usepackage[sectionpage=progressbar,progressbar=foot]{theme/beamerthememetropolis}
 \usepackage{tikz}
 \usepackage{caption}
 \usepackage{fontawesome}
-\setbeamersize{text margin left=3mm,text margin right=3.6cm}
+
 % Libraries
 \usetikzlibrary{positioning, shapes, backgrounds, fit}
 
 % Global Settings
+\setbeamersize{text margin left=3mm,text margin right=3.6cm}
 \tikzset{
     invisible/.style = {opacity=0},
     visible on/.style = {alt={#1{}{invisible}}},
@@ -21,11 +25,10 @@
 \captionsetup{justification = raggedright, singlelinecheck = false}
 
 % Details
-%\title{Containerization \& Virtualization}
-%\date{\today}
-%\author{Ahmed Hassanien}
-%\institute{Garage Education}
-\input{./front_page.tex}
+\title[Containerization \& Virtualization]{Containerization \& Virtualization}
+\subtitle{\textit{Toward an Agile Infrastructure}}
+\input{./common/front_page.tex}
+
 % Document
 \begin{document}
 
@@ -36,9 +39,9 @@
         \tableofcontents[hideallsubsections]
     \end{frame}
 
-    \include{sections/introduction}
-    \include{sections/virtualization}
-    \include{sections/containerization}
-    \include{sections/questions}
-    \include{sections/references}
+    \include{containerization/sections/introduction}
+    \include{containerization/sections/virtualization}
+    \include{containerization/sections/containerization}
+    \include{containerization/sections/questions}
+    \include{containerization/sections/references}
 \end{document}

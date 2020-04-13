@@ -1,0 +1,74 @@
+%----------------------------------------------------------------------------------------------------------------------%
+
+\section{Virtualization}\label{sec:virtualization}
+%----------------------------------------------------------------------------------------------------------------------%
+
+\subsection{Virtual Machines}\label{subsec:virtual-machines}
+\begin{frame}{Virtual Machines}
+    \begin{itemize}[<+- | alert@+>]
+        \item Virtualizing hardware produces virtual machines (VMs).
+        \item Virtualization allows you to run multiple VMs on a single physical server.
+        Each VM includes a full copy of an operating system, the application, necessary binaries, and libraries - taking up tens of GBs.
+        \item Virtualization allows more effortless adding and updating of applications that solve the scalability issue.
+        \item Virtualization allows better utilization of resources.
+        \item Virtualization isolates applications between VMs.
+    \end{itemize}
+\end{frame}
+
+\subsection{Virtualized Deployment}\label{subsec:virtualized-deployment}
+\begin{frame}{Virtualized Deployment}
+    \begin{figure}[!t]
+        \raggedright
+        \input{containerization/figures/virtualizaed-deployment.tikz}
+        \caption{Virtualization Deployment}
+    \end{figure}
+\end{frame}
+
+\subsection{Hypervisor}\label{subsec:hypervisor}
+\begin{frame}{Hypervisor}
+    \begin{itemize}[<+- | alert@+>]
+        \item How is virtualization possible?
+        \begin{itemize}
+            \item A hypervisor is computer software, firmware or hardware that creates and runs virtual machines.
+            \item The hypervisor allows multiple VMs to run on a single machine.
+        \end{itemize}
+        \item The hypervisor has 2 types:
+    \end{itemize}
+\end{frame}
+
+\subsection{Type 1 Hypervisor}\label{subsec:type-1-hypervisor}
+\begin{frame}{Type 1 Hypervisor}
+    Type-1, native, or bare-metal hypervisors.
+    \pause
+    \metroset{block=fill}
+    \begin{block}{Examples}
+        \begin{itemize}
+            \item Type-1: VMware ESX and Citrix Xen servers.
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{figure}[!t]
+        \raggedright
+        \input{containerization/figures/type-1-hypervisor.tikz}
+        \caption{Type 1, native, or bare-metal hypervisors}
+    \end{figure}
+\end{frame}
+
+\subsection{Type 2 Hypervisor}\label{subsec:type-2-hypervisor}
+\begin{frame}{Type 2 Hypervisor}
+    Type-2, or hosted hypervisors.
+    \pause
+    \metroset{block=fill}
+    \begin{block}{Examples}
+        \begin{itemize}
+            \item Type-2: VMware player and VirtualBox.
+        \end{itemize}
+    \end{block}
+    \pause
+    \begin{figure}[!t]
+        \raggedright
+        \input{containerization/figures/type-2-hypervisor.tikz}
+        \caption{Type 2, or Hosted Hypervisor}
+    \end{figure}
+\end{frame}
+%----------------------------------------------------------------------------------------------------------------------%
