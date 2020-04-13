@@ -8,3 +8,4 @@ build:
   artifacts:
     paths:
       - "./out/containerization.pdf"
+      - "./out/docker.pdf"
