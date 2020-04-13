@@ -13,12 +13,12 @@ docker run hello-world
 #    Hello from Docker!
 #    This message shows that your installation appears to be working correctly.
 
+docker images ls
+# REPOSITORY                                TAG                 IMAGE ID            CREATED             SIZE
+# hello-world                               latest              fce289e99eb9        15 months ago       1.84kB
+
 docker ps --all
 #    CONTAINER ID     IMAGE           COMMAND      CREATED            STATUS
 #    54f4984ed6a8     hello-world     "/hello"     20 seconds ago     Exited (0) 19 seconds ago
-
-#docker images
-# REPOSITORY                                TAG                 IMAGE ID            CREATED             SIZE
-# hello-world                               latest              fce289e99eb9        15 months ago       1.84kB
 
 

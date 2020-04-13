@@ -2,13 +2,26 @@
 %! Date = 4/1/20
 
 % Preamble
-\documentclass[aspectratio=169]{beamer}
+\documentclass[
+    aspectratio=169
+]{beamer}
 % Packages
 \usepackage[sectionpage=progressbar,progressbar=foot]{theme/beamerthememetropolis}
+\usepackage{tikz}
+\usepackage{caption}
 \usepackage{fontawesome}
+
+% Libraries
+\usetikzlibrary{positioning, shapes, backgrounds, fit}
 
 % Global Settings
 \setbeamersize{text margin left=3mm,text margin right=3.6cm}
+\tikzset{
+    invisible/.style = {opacity=0},
+    visible on/.style = {alt={#1{}{invisible}}},
+    alt/.code args = {<#1>#2#3}{\alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}}} % \pgfkeysalso doesn't change the path.
+}
+\captionsetup{justification = raggedright, singlelinecheck = false}
 
 % Details
 \title[Dockerization]{Dockerization}
@@ -25,77 +38,5 @@
         \tableofcontents[hideallsubsections]
     \end{frame}
 
-    %----------------------------------------------------------------------------------------------------------------------%
-
-
-    \section{Introduction}\label{sec:introduction}
-    %----------------------------------------------------------------------------------------------------------------------%
-
-    \subsection{Docker Engine Components}\label{subsec:docker-engine-components}
-    \begin{frame}{Docker Engine Components}
-        \begin{itemize}[<+- | alert@+>]
-            \item Docker Engine is a client-server application with these major components:
-            \begin{itemize}
-                \item \textbf{The Docker daemon} A server which is a type of long-running program called a daemon process (the dockerd command).
-                \begin{itemize}
-                    \item A REST API which specifies interfaces that programs can use to talk to the daemon and instruct it what to do.
-                    \item A command line interface (CLI) client (the docker command).
-                \end{itemize}
-                \item \textbf{The Docker client} The Docker client (docker) is the primary way that many Docker users interact with Docker.
-                \begin{itemize}
-                    \item A REST API which specifies interfaces that programs can use to talk to the daemon and instruct it what to do.
-                    \item A command line interface (CLI) client (the docker command).
-                \end{itemize}
-            \end{itemize}
-        \end{itemize}
-    \end{frame}
-
-    \subsection{Docker Architecture}\label{subsec:docker-architecture}
-    \begin{frame}{Docker Architecture}
-        \begin{itemize}[<+- | alert@+>]
-            \item TODO: PICTURE GOES HERE
-        \end{itemize}
-    \end{frame}
-\end{document}
-
-% 2. Docker Architecture
-% The Docker daemon
-%The Docker daemon (dockerd) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes.
-%Docker registries
-%A Docker registry stores Docker images. Docker Hub is a public registry that anyone can use, and Docker is configured to look for images on Docker Hub by default.
-%Images
-%An image is a read-only template with instructions for creating a Docker container. Often, an image is based on another image, with some additional customization. For example, you may build an image which is based on the ubuntu image, but installs the Apache web server and your application, as well as the configuration details needed to make your application run.
-%You might create your own images or you might only use those created by others and published in a registry. To build your own image, you create a Dockerfile with a simple syntax for defining the steps needed to create the image and run it. Each instruction in a Dockerfile creates a layer in the image. When you change the Dockerfile and rebuild the image, only those layers which have changed are rebuilt. This is part of what makes images so lightweight, small, and fast, when compared to other virtualization technologies.
-%Containers
-%A container is a runnable instance of an image. You can create, start, stop, move, or delete a container using the Docker API or CLI. You can connect a container to one or more networks, attach storage to it, or even create a new image based on its current state.
-%By default, a container is relatively well isolated from other containers and its host machine. You can control how isolated a container’s network, storage, or other underlying subsystems are from other containers or from the host machine.
-%A container is defined by its image as well as any configuration options you provide to it when you create or start it. When a container is removed, any changes to its state that are not stored in persistent storage disappear.
-
-
-%Example docker run command
-%$ docker pull ubuntu
-%$ docker run -i -t ubuntu /bin/bash
-%When you use the docker pull or docker run commands, the required images are pulled from your configured registry. When you use the docker push command, your image is pushed to your configured registry.
-
-%
-%The following command runs an ubuntu container, attaches interactively to your local command-line session, and runs /bin/bash.
-%
-%$ docker run -i -t ubuntu /bin/bash
-%
-%When you run this command, the following happens (assuming you are using the default registry configuration):
-%
-%    If you do not have the ubuntu image locally, Docker pulls it from your configured registry, as though you had run docker pull ubuntu manually.
-%
-%    Docker creates a new container, as though you had run a docker container create command manually.
-%
-%    Docker allocates a read-write filesystem to the container, as its final layer. This allows a running container to create or modify files and directories in its local filesystem.
-%
-%    Docker creates a network interface to connect the container to the default network, since you did not specify any networking options. This includes assigning an IP address to the container. By default, containers can connect to external networks using the host machine’s network connection.
-%
-%    Docker starts the container and executes /bin/bash. Because the container is running interactively and attached to your terminal (due to the -i and -t flags), you can provide input using your keyboard while the output is logged to your terminal.
-%
-%    When you type exit to terminate the /bin/bash command, the container stops but is not removed. You can start it again or remove it.
-
-%
-
+    \include{docker/sections/introduction}
 \end{document}
