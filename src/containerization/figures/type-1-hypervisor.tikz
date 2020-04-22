@@ -1,0 +1,22 @@
+\begin{tikzpicture}[
+    node/.style={
+        scale=0.75,
+        node distance=2mm,
+        rectangle,
+        draw=black,
+        thick,
+        text centered,
+        minimum height=10mm,
+        minimum width=10mm
+    }
+]
+    \tikzstyle{hw} = [fill = blue!35]
+    \tikzstyle{sw} = [fill = blue!15]
+    \tikzstyle{hv} = [fill = blue!5 ]
+
+    \node [node, sw, text width=1.95cm, visible on=<5->] (A1) {Guest OS};
+    \node [node, sw, right = of A1, text width=1.95cm, visible on=<6->] (A2) {Guest OS};
+    \node [node, sw, right = of A2, text width=1.95cm, visible on=<7->] (A3) {Guest OS};
+    \node [node, hv, below = of A2, text width=7cm, visible on=<4->] (HV) {Hypervisor};
+    \node [node, hw, below = of HV, text width=7cm, visible on=<3->] (HW) {Hardware};
+\end{tikzpicture}

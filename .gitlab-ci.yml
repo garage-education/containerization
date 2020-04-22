@@ -1,0 +1,11 @@
+image: aergus/latex
+
+build:
+  script:
+    - cd src
+    - latexmk -pdf containerization.tex  -output-directory=../out -interaction=nonstopmode -synctex=1
+    - latexmk -pdf docker.tex  -output-directory=../out -interaction=nonstopmode -synctex=1
+  artifacts:
+    paths:
+      - "./out/containerization.pdf"
+      - "./out/docker.pdf"
