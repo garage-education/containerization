@@ -28,9 +28,9 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: lecture
-          path: main.pdf
+          path: out/containerization.pdf
       - name: Upload Docker
         uses: actions/upload-artifact@master
         with:
           name: lecture
-          path: main.pdf
+          path: out/docker.pdf
