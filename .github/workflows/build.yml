@@ -13,13 +13,13 @@ jobs:
         with:
           working_directory: src
           root_file: containerization.tex
-          args: -output-directory=../out -interaction=nonstopmode -synctex=1
+          args: -pdf -output-directory=../out -interaction=nonstopmode -synctex=1
       - name: Compile Docker
         uses: dante-ev/latex-action@master
         with:
           working_directory: src
           root_file: docker.tex
-          args: -output-directory=../out -interaction=nonstopmode -synctex=1
+          args: -pdf -output-directory=../out -interaction=nonstopmode -synctex=1
       - name: Check pdf files
         run: |
           file out/containerization.pdf | grep -q ' PDF '
