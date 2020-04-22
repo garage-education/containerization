@@ -1,0 +1,150 @@
+%----------------------------------------------------------------------------------------------------------------------%
+
+\section{Docker - Long-lived containers}\label{sec:docker-long-lived-containers}
+%----------------------------------------------------------------------------------------------------------------------%
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+    backgroundcolor=\color{lbcolor},
+    tabsize=4,
+    rulecolor=,
+    language=matlab,
+    basicstyle=\fontsize{7}{7}\ttfamily,
+    upquote=true,
+    aboveskip={1.5\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+
+\subsection{docker detached}\label{subsec:docker-detached}
+\begin{frame}{docker detached}
+    \begin{itemize}
+        \item \texttt{-d, --detach} Run container in background and print container ID.
+        \lstinputlisting[language=bash, linerange={215-220}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker expose container port}\label{subsec:docker-expose-container-port}
+\begin{frame}{docker expose container port}
+    \begin{itemize}
+        \item \texttt{port} List port mappings or a specific mapping for the container.
+        \item \texttt{-p, --publish list} Publish a container's port(s) to the host.
+        \lstinputlisting[language=bash, linerange={222-229}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+\begin{frame}{docker bridge networking}
+    \begin{figure}[!t]
+        \raggedright
+        \input{docker/figures/docker-bridge-httpd.tikz}
+        \caption{Docker Bridge Networking}
+    \end{figure}
+\end{frame}
+
+\subsection{docker show container logs}\label{subsec:docker-show-container-logs}
+\begin{frame}{docker show container logs}
+    \begin{itemize}
+        \item \texttt{logs} Fetch the logs of a container.
+        \item \texttt{-t, --timestamps} Show timestamps.
+        \item \texttt{-f, --follow} Follow log output.
+        \lstinputlisting[language=bash, linerange={231-239}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker restart container}\label{subsec:docker-restart-container}
+\begin{frame}{docker restart}
+    \begin{itemize}
+        \item \texttt{restart} Restart one or more containers.
+        \item \texttt{-t, --time int} Seconds to wait for stop before killing the container (default 10).
+        \lstinputlisting[language=bash, linerange={241-249}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker stop container}\label{subsec:docker-stop-container}
+\begin{frame}{docker stop container}
+    \begin{itemize}
+        \item \texttt{stop} Stop one or more running containers.
+        \item \texttt{-t, --time int} Seconds to wait for stop before killing it (default 10).
+        \lstinputlisting[language=bash, linerange={250-260}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker kill container}\label{subsec:docker-kill-container}
+\begin{frame}{docker kill container}
+    \begin{itemize}
+        \item \texttt{Kill} Kill one or more running containers.
+        \lstinputlisting[language=bash, linerange={262-265}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker stats}\label{subsec:docker-stats}
+\begin{frame}{docker stats}
+    \begin{itemize}
+        \item \texttt{stats} Display a live stream of container(s) resource usage statistics.
+        \item \texttt{-a, --all} Show all containers (default shows just running).
+        \item \texttt{--no-stream} Disable streaming stats and only pull the first result.
+        \lstinputlisting[language=bash, linerange={267-274}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker top}\label{subsec:docker-top}
+\begin{frame}{docker top}
+    \begin{itemize}
+        \item \texttt{top} Display the running processes of a container.
+        \lstinputlisting[language=bash, linerange={276-281}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker pause and unpause}\label{subsec:docker-pause-and-unpause}
+\begin{frame}{docker pause and unpause}
+    \begin{itemize}
+        \item \texttt{pause} Pause all processes within one or more containers.
+        \item \texttt{unpause} Unpause all processes within one or more containers.
+        \lstinputlisting[language=bash, linerange={283-294}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker exec}\label{subsec:docker-exec}
+\begin{frame}{docker exec}
+    \begin{itemize}
+        \item \texttt{exec} Run a command in a running container.
+        \item \texttt{-i, --interactive} Keep STDIN open even if not attached.
+        \item \texttt{-t, --tty} Allocate a pseudo-TTY.
+        \lstinputlisting[language=bash, linerange={296-300,302-305,307-309}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker cp}\label{subsec:docker-cp}
+\begin{frame}{docker cp}
+    \begin{itemize}
+        \item \texttt{cp} Copy files/folders between a container and the local filesystem.
+        \lstinputlisting[language=bash, linerange={317-319}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker wait}\label{subsec:docker-wait}
+\begin{frame}{docker wait}
+    \begin{itemize}
+        \item \texttt{wait} Block until one or more containers stop, then print their exit codes.
+        \lstinputlisting[language=bash, linerange={321-324}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker attach}\label{subsec:docker-attach}
+\begin{frame}{docker attach}
+    \begin{itemize}
+        \item \texttt{attach} Attach local standard input, output, and error streams to a running container.
+        \lstinputlisting[language=bash, linerange={326}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------------------------------------%
