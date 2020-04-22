@@ -1,0 +1,36 @@
+name: Build LaTeX document
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+      - name: Compile Containerization
+        uses: dante-ev/latex-action@master
+        with:
+          working_directory: src
+          root_file: containerization.tex
+          args: -pdf -output-directory=../out -interaction=nonstopmode -synctex=1
+      - name: Compile Docker
+        uses: dante-ev/latex-action@master
+        with:
+          working_directory: src
+          root_file: docker.tex
+          args: -pdf -output-directory=../out -interaction=nonstopmode -synctex=1
+      - name: Check pdf files
+        run: |
+          file out/containerization.pdf | grep -q ' PDF '
+          file out/docker.pdf | grep -q ' PDF '
+      - name: Upload Containerization PDF
+        uses: actions/upload-artifact@master
+        with:
+          name: lecture
+          path: out/containerization.pdf
+      - name: Upload Docker
+        uses: actions/upload-artifact@master
+        with:
+          name: lecture
+          path: out/docker.pdf
