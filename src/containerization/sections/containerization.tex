@@ -1,0 +1,43 @@
+%----------------------------------------------------------------------------------------------------------------------%
+
+\section{Containerization}\label{sec:containerization}
+%----------------------------------------------------------------------------------------------------------------------%
+
+\subsection{Containers}\label{subsec:containers}
+\begin{frame}{What is a Container?}
+    \begin{itemize}[<+- | alert@+>]
+        \item The process of virtualizing the operating system produces containers.
+        \item Container is a virtual operating system.
+        \item A container is an abstraction at the OS layer that packages code and dependencies together as a standardized unit of software.
+        \item Containers take up less space than VMs, boots quickly, and in isolation.
+        \item Containerization eliminates infrastructure wasted resources and utilizes them.
+    \end{itemize}
+\end{frame}
+
+\subsection{Container Deployment}\label{subsec:container-deployment}
+\begin{frame}{Container Deployment}
+    \begin{figure}[!t]
+        \raggedright
+        \input{containerization/figures/container-deployment.tikz}
+        \caption{Containerization Deployment}
+    \end{figure}
+\end{frame}
+
+\subsection{OS-level virtualization}\label{subsec:os-level-virtualization}
+\begin{frame}{OS-level virtualization}
+    \begin{itemize}[<+- | alert@+>]
+        \item How is containerization possible?
+        \begin{itemize}
+            \item OS-level virtualization refers to an operating system paradigm in which the operating system allows the existence of multiple isolated user-space instances (containers).
+            \item OS-level virtualization solutions are the container engines.
+            \item A container engine is a managed environment for deploying containerized applications.
+        \end{itemize}
+        \item User-space instances have different names
+        \begin{itemize}
+            \item Containers in \textbf{Docker} and Linux containers \textbf{LXC}.
+            \item VPS in \textbf{OpenVZ}
+            \item Virtual Kernel \textbf{DragonFly BSD}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------------------------------------%

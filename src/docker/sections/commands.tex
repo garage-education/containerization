@@ -1,0 +1,146 @@
+%----------------------------------------------------------------------------------------------------------------------%
+
+\section{Docker Commands}\label{sec:docker-commands}
+%----------------------------------------------------------------------------------------------------------------------%
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstset{
+    backgroundcolor=\color{lbcolor},
+    tabsize=4,
+    rulecolor=,
+    language=matlab,
+    basicstyle=\fontsize{7}{7}\ttfamily,
+    upquote=true,
+    aboveskip={1.5\baselineskip},
+    columns=fixed,
+    showstringspaces=false,
+    extendedchars=true,
+    breaklines=true,
+    prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+    frame=single,
+    showtabs=false,
+    showspaces=false,
+    showstringspaces=false,
+    identifierstyle=\ttfamily,
+    keywordstyle=\color[rgb]{0,0,1},
+    commentstyle=\color[rgb]{0.133,0.545,0.133},
+    stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+
+\subsection{docker version}\label{subsec:docker-version}
+\begin{frame}{docker version}
+    \begin{itemize}
+        \item \texttt{version} Show the Docker version information
+        \pause
+        \lstinputlisting[language=bash, linerange={3-4}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker run}\label{subsec:docker-run}
+\begin{frame}{docker run}
+    \begin{itemize}
+        \item \texttt{run} Run a command in a new container
+        \pause
+        \lstinputlisting[language=bash, linerange={6-14}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker pull}\label{subsec:docker-pull}
+\begin{frame}{docker pull}
+    \begin{itemize}
+        \item \texttt{run} Pull an image or a repository from a registry
+        \pause
+        \lstinputlisting[language=bash, linerange={16-30}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker ps}\label{subsec:docker-ps}
+\begin{frame}{docker ps}
+    \begin{itemize}
+        \item \texttt{ps} List containers
+        \pause
+        \lstinputlisting[language=bash, linerange={47-51,79-84}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker start}\label{subsec:docker-start}
+\begin{frame}{docker start}
+    \begin{itemize}
+        \item \texttt{start} Start one or more stopped containers
+        \pause
+        \lstinputlisting[language=bash, linerange={63-77}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker rm}\label{subsec:docker-rm}
+\begin{frame}{docker rm}
+    \begin{itemize}
+        \item \texttt{rm} Remove one or more containers
+        \pause
+        \lstinputlisting[language=bash, linerange={85-94,109-110}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker rename}\label{subsec:docker-rename}
+\begin{frame}{docker rename}
+    \begin{itemize}
+        \item \texttt{rename} Rename a container
+        \pause
+        \lstinputlisting[language=bash, linerange={112,127-134}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker images}\label{subsec:docker-images}
+\begin{frame}{docker images}
+    \begin{itemize}
+        \item \texttt{images} List images
+        \pause
+        \lstinputlisting[language=bash, linerange={153-156}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker rmi}\label{subsec:docker-rmi}
+\begin{frame}{docker rmi}
+    \begin{itemize}
+        \item \texttt{rmi} Remove one or more images
+        \pause
+        \lstinputlisting[language=bash, linerange={158-166}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker search}\label{subsec:docker-search}
+\begin{frame}{docker search}
+    \begin{itemize}
+        \item \texttt{search} Search the Docker Hub for images
+        \pause
+        \lstinputlisting[language=bash, linerange={181-190}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker login}\label{subsec:docker-login}
+\begin{frame}{docker login}
+    \begin{itemize}
+        \item \texttt{login} Log in to a Docker registry
+        \pause
+        \lstinputlisting[language=bash, linerange={192-196}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{docker logout}\label{subsec:docker-logout}
+\begin{frame}{docker logout}
+    \begin{itemize}
+        \item \texttt{logout} Log out from a Docker registry
+        \pause
+        \lstinputlisting[language=bash, linerange={198-199}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{index.docker.io}\label{subsec:index.docker.io}
+\begin{frame}{index.docker.io}
+    \begin{itemize}
+        \item \texttt{index.docker.io} is hosted on AWS :-)
+        \pause
+        \lstinputlisting[language=bash, linerange={201-213}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------------------------------------%

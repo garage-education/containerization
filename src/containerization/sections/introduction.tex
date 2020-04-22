@@ -1,0 +1,34 @@
+%----------------------------------------------------------------------------------------------------------------------%
+
+\section{Introduction}\label{sec:introduction}
+%----------------------------------------------------------------------------------------------------------------------%
+
+\subsection{History of running a software}\label{subsec:history-of-running-a-software}
+\begin{frame}{History of running a software}
+    \begin{itemize}[<+- | alert@+>]
+        \item Early on, organizations ran applications on physical servers.
+        \item Install or use an existing operating system.
+        \item Install the tools needed by your software.
+        \item Install dependencies of your software.
+        \item Run your software.
+    \end{itemize}
+\end{frame}
+
+\subsection{Traditional Deployment}\label{subsec:traditional-deployment}
+\begin{frame}{Traditional Deployment}
+    \begin{figure}
+        \raggedright
+        \input{containerization/figures/traditional-deployment.tikz}
+        \caption{Traditional Deployment}
+    \end{figure}
+\end{frame}
+
+\subsection{Issues with traditional deployment}\label{subsec:issues-with-traditional-deployment}
+\begin{frame}{Issues with traditional deployment}
+    \begin{itemize}[<+- | alert@+>]
+        \item Isolation issue, no way to define resource boundaries for applications in a physical server, and this caused resource allocation issues.
+        \item Scaling issues as resources were underutilized.
+        \item It was expensive for organizations to maintain many physical servers.
+    \end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------------------------------------%
