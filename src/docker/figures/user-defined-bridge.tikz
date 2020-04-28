@@ -1,0 +1,66 @@
+\begin{tikzpicture}[
+    node/.style = {
+        scale=0.70,
+        node distance = 2mm,
+        rectangle,
+        draw = black,
+        thick,
+        text centered,
+        minimum height = 10mm,
+        minimum width = 10mm
+    },
+    txt/.style = {
+        scale=0.70,
+        node distance = 2mm,
+        rectangle,
+        text centered,
+        minimum height = 2mm,
+        minimum width = 10mm
+    }
+]
+    \tikzstyle{layer} = [inner sep=1mm, draw=black, thick, fill= gray!30]
+    \tikzstyle{de} = [inner sep=1mm, draw=black, thick, fill= gray!60]
+    \tikzstyle{cr} = [inner sep=1mm, draw=black, thick, fill= gray!90]
+    \tikzstyle{dn} = [inner sep=1mm, draw=black, thick, opacity=0.6, fill= white!40]
+    \tikzstyle{vm} = [fill = gray!30]
+    \tikzstyle{hw} = [fill = blue!35]
+    \tikzstyle{sw} = [fill = blue!15]
+    \tikzstyle{hv} = [fill = blue!5 ]
+    \tikzstyle{ar} = [fill = black  ]
+
+    \node [txt, text width=8cm, visible on=<1->] (OS) {Operating System};
+    \node [node, hw, above = of OS, text width=8cm, visible on=<2->] (PN) {Physical Network};
+    \node [txt, above = of PN, text width=7.7cm, visible on=<3->] (DE) {Docker Engine};
+    \node [txt, above = of DE, text width=4.0cm, visible on=<7->] (UD) {User-defined Network};
+    % Container 1 structure
+    \node [node, hw, above = of UD, xshift = -2.0cm, text width=2.8cm, visible on=<5->] (P1) {Bridge};
+    \node [node, fill= gray!90, above = of P1, text width=2.8cm, visible on=<6->] (I1) {10.0.0.2};
+    \node [txt, above = of I1, text width=3.3cm, visible on=<4->] (C1) {Container};
+    % Container 2 structure
+    \node [node, hw, right = of P1, xshift = 6.5mm, text width=2.8cm, visible on=<5->] (P2) {Bridge};
+    \node [node, fill= gray!90, above = of P2, text width=2.8cm, visible on=<6->] (I2) {10.0.0.3};
+    \node [txt, above = of I2, text width=3.3cm, visible on=<4->] (C2) {Container};
+    % Empty space
+    \node [txt, above = of C1, text width=3.3cm, visible on=<1->] (T1) {};
+    \node [txt, above = of T1, text width=3.3cm, visible on=<1->] (T2) {};
+    % Operating system group
+    \begin{scope}[on background layer]
+        \node [fit = (OS) (PN) (DE) (P1) (I1) (C1) (P2) (I2) (C2) (T1) (T2), layer, visible on=<1->] {};
+    \end{scope}
+    % Docker Engine group
+    \begin{scope}[on background layer]
+        \node [fit = (DE) (P1) (I1) (C1) (P2) (I2) (C2) (T1), de, visible on=<3->] {};
+    \end{scope}
+    % Container 1 group
+    \begin{scope}[on background layer]
+        \node [fit = (P1) (I1) (C1), cr, visible on=<4->] {};
+    \end{scope}
+    % Container 2 group
+    \begin{scope}[on background layer]
+        \node [fit = (P2) (I2) (C2), cr, visible on=<4->] {};
+    \end{scope}
+    % User-defined bridge networking
+    \begin{scope}[on background layer]
+        \node [fit = (UD) (P1) (I1) (I2) (P2), dn, visible on=<7->] {};
+    \end{scope}
+\end{tikzpicture}
