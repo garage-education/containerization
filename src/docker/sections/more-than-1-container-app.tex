@@ -1,0 +1,41 @@
+%----------------------------------------------------------------------------------------------------------------------%
+
+
+\section{Docker - More than one container app}\label{sec:more-than-one-container-app}
+%----------------------------------------------------------------------------------------------------------------------%
+
+\subsection{Docker default bridge}\label{subsec:docker-default-bridge}
+\begin{frame}{Docker default bridge}
+    \begin{itemize}
+        \item What if we have an application with more than one container.
+        \item Ex; WordPress rich content management system uses apache httpd and mysql servers.
+        \item \texttt{-e, --env list} Set environment variables.
+        \lstinputlisting[language=bash, linerange={329-334}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}
+
+\subsection{User-defined bridge}\label{subsec:user-defined-bridge}
+\begin{frame}{User-defined bridge}
+    IMAGE GOES HERE
+\end{frame}
+\begin{frame}{User-defined bridge}
+    \begin{itemize}
+        \item User-defined bridges provide automatic DNS resolution between containers.
+        \item User-defined bridges provide better isolation.
+        \item Containers can be attached and detached from user-defined networks on the fly.
+        \item Each user-defined network creates a configurable bridge.
+        \item Linked containers on the default bridge network share environment variables.
+    \end{itemize}
+\end{frame}
+
+\subsection{Docker Network Commands}\label{subsec:docker-network-commands}
+\begin{frame}{Docker Network Commands}
+    \begin{itemize}
+        \item \texttt{create} Create a network.
+        \item \texttt{ls} List networks.
+        \item \texttt{connect} Connect a container to a network.
+        \item \texttt{inspect} Display detailed information on one or more networks.
+        \item \texttt{rm} Deletes one or more networks.
+        \lstinputlisting[language=bash, linerange={336-344}]{docker/shell-samples.sh}
+    \end{itemize}
+\end{frame}

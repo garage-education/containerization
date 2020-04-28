@@ -84,7 +84,7 @@ docker ps -a -q
 # 5bf7bfb3de4a
 docker rm 44b30241b056
 # 44b30241b056
-docker rm $(docker ps -a -q)
+docker rm "$(docker ps -a -q)"
 # 6a5acfb94078
 # eefc7f9cf8a6
 # b361e061f108
@@ -163,7 +163,7 @@ docker rmi ubuntu
 # Deleted: sha256:efcf4a93c18b5d01aa8e10a2e3b7e2b2eef0378336456d8653e2d123d6232c1e
 # Deleted: sha256:1e1aa31289fdca521c403edd6b37317bf0a349a941c7f19b6d9d311f59347502
 # Deleted: sha256:c8be1b8f4d60d99c281fc2db75e0f56df42a83ad2f0b091621ce19357e19d853
-docker rmi $(docker images -q)
+docker rmi "$(docker images -q)"
 # Untagged: docker/whalesay:latest
 # Untagged: docker/whalesay@sha256:178598e51a26abbc958b8a2e48825c90bc22e641de3d31e18aaf55f3258ba93b
 # Deleted: sha256:6b362a9f73eb8c33b48c95f4fcce1b6637fc25646728cf7fb0679b2da273c3f4
@@ -324,3 +324,22 @@ docker stop nervous_lamarr
 # nervous_lamarr
 
 docker attach gallant_lewin
+
+
+docker run --name mysql -e MYSQL_ROOT_PASSWORD=P@ssw0rd -d mysql:5.7
+docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=P@ssw0rd \
+       -d mysql:5.7
+hostname
+# hostname.lan
+docker run -it --rm mysql:5.7 mysql -hhostname.lan -uroot -pP@ssw0rd
+docker run -it --rm mysql:5.7 mysql -h"$(hostname)" -uroot -pP@ssw0rd
+
+docker network create wp-network
+docker network connect wp-network mysql
+docker network inspect wp-network
+docker run --name wordpress --network wp-network -p 8080:80 \
+       -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_NAME=wp_db \
+       -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=P@ssw0rd \
+       -d wordpress
+docker network inspect wp-network
+docker network rm wp-network
