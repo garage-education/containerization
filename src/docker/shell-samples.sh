@@ -45,20 +45,20 @@ docker run docker/whalesay cowsay Garage Education
 #           \____\______/
 
 docker ps
-# CONTAINER ID    IMAGE    COMMAND    CREATED    STATUS    PORTS    NAMES
+# CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
 docker ps -a # --all
-# CONTAINER ID    IMAGE       COMMAND          CREATED          STATUS                      NAMES
-# 5bf7bfb3de4a    whalesay    cowsay Garage    8 minutes ago    Exited (0) 3 minutes ago    friendly_roentgen
+# CONTAINER ID IMAGE    COMMAND       CREATED       STATUS                   NAMES
+# 5bf7bfb3de4a whalesay cowsay Garage 8 minutes ago Exited (0) 3 minutes ago friendly_roentgen
 docker run docker/whalesay cowsay Garage Education
 docker run docker/whalesay cowsay Garage Education
 docker run docker/whalesay cowsay Garage Education
 docker run docker/whalesay cowsay Garage Education
-# CONTAINER ID    IMAGE       COMMAND         CREATED          STATUS                      NAMES
-# 44b30241b056    whalesay    cowsay Garage   3 seconds ago    Exited (0) 3 seconds ago    inspiring_mendel
-# 6a5acfb94078    whalesay    cowsay Garage   5 seconds ago    Exited (0) 4 seconds ago    happy_cannon
-# eefc7f9cf8a6    whalesay    cowsay Garage   6 seconds ago    Exited (0) 5 seconds ago    agitated_hugle
-# b361e061f108    whalesay    cowsay Garage   8 seconds ago    Exited (0) 7 seconds ago    confident_cori
-# 5bf7bfb3de4a    whalesay    cowsay Garage   10 minutes ago   Exited (0) 6 minutes ago    friendly_roentgen
+# CONTAINER ID IMAGE    COMMAND       CREATED        STATUS                   NAMES
+# 44b30241b056 whalesay cowsay Garage 3 seconds ago  Exited (0) 3 seconds ago inspiring_mendel
+# 6a5acfb94078 whalesay cowsay Garage 5 seconds ago  Exited (0) 4 seconds ago happy_cannon
+# eefc7f9cf8a6 whalesay cowsay Garage 6 seconds ago  Exited (0) 5 seconds ago agitated_hugle
+# b361e061f108 whalesay cowsay Garage 8 seconds ago  Exited (0) 7 seconds ago confident_cori
+# 5bf7bfb3de4a whalesay cowsay Garage 10 minutes ago Exited (0) 6 minutes ago friendly_roentgen
 
 docker start -a -i friendly_roentgen
 #  __________________
@@ -90,7 +90,7 @@ docker rm "$(docker ps -a -q)"
 # b361e061f108
 # 5bf7bfb3de4a
 docker ps -a
-# CONTAINER ID    IMAGE    COMMAND    CREATED    STATUS    NAMES
+# CONTAINER ID IMAGE COMMAND CREATED STATUS NAMES
 docker run --rm docker/whalesay cowsay Garage Education
 #  __________________
 # < Garage Education >
@@ -107,7 +107,7 @@ docker run --rm docker/whalesay cowsay Garage Education
 #         \    \        __/
 #           \____\______/
 docker ps -a
-# CONTAINER ID    IMAGE    COMMAND    CREATED    STATUS    NAMES
+# CONTAINER ID IMAGE COMMAND CREATED STATUS NAMES
 
 docker run docker/whalesay cowsay Garage Education
 #  __________________
@@ -125,12 +125,12 @@ docker run docker/whalesay cowsay Garage Education
 #         \    \        __/
 #           \____\______/
 docker ps -a
-# CONTAINER ID        IMAGE        COMMAND         CREATED             STATUS                      NAMES
-# 6de4ea6d7231        whalesay     cowsay Garage   3 seconds ago       Exited (0) 2 seconds ago    loving_antonelli
+# CONTAINER ID IMAGE   COMMAND        CREATED       STATUS                   NAMES
+# 6de4ea6d7231 whalesay cowsay Garage 3 seconds ago Exited (0) 2 seconds ago loving_antonelli
 docker rename loving_antonelli whalesay
 docker ps -a
-# CONTAINER ID        IMAGE        COMMAND         CREATED             STATUS                       NAMES
-# 6de4ea6d7231        whalesay     cowsay Garage   21 seconds ago      Exited (0) 20 seconds ago    whalesay
+# CONTAINER ID IMAGE    COMMAND        CREATED        STATUS                    NAMES                    NAMES
+# 6de4ea6d7231 whalesay cowsay Garage  21 seconds ago Exited (0) 20 seconds ago whalesay
 docker run --name education-whale docker/whalesay cowsay Garage Education
 #  __________________
 # < Garage Education >
@@ -147,13 +147,13 @@ docker run --name education-whale docker/whalesay cowsay Garage Education
 #         \    \        __/
 #           \____\______/
 docker ps -a
-# CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
-# c870efd86657        docker/whalesay     "cowsay Garage Educa  "   3 seconds ago       Exited (0) 2 seconds ago                       education-whale
+# CONTAINER ID IMAGE           COMMAND             CREATED       STATUS                   PORTS NAMES
+# c870efd86657 docker/whalesay cowsay Garage Educa 3 seconds ago Exited (0) 2 seconds ago       education-whale
 
 docker images
-# REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-# ubuntu              latest              4e5021d210f6        3 weeks ago         64.2MB
-# docker/whalesay     latest              6b362a9f73eb        4 years ago         247MB
+# REPOSITORY      TAG    IMAGE ID     CREATED     SIZE
+# ubuntu          latest 4e5021d210f6 3 weeks ago 64.2MB
+# docker/whalesay latest 6b362a9f73eb 4 years ago 247MB
 
 docker rmi ubuntu
 # Untagged: ubuntu:latest
@@ -179,15 +179,15 @@ docker rmi "$(docker images -q)"
 # Deleted: sha256:1154ba695078d29ea6c4e1adb55c463959cd77509adf09710e2315827d66271a
 
 docker search ubuntu
-# NAME                              DESCRIPTION                                     STARS  OFFICIAL  AUTOMATED
-# ubuntu                            Ubuntu is a Debian-based Linux operating sys     10749  [OK]
-# dorowu/ubuntu-desktop-lxde-vnc    Docker image to provide HTML5 VNC interface      414              [OK]
-# rastasheep/ubuntu-sshd            Dockerized SSH service, built on top of offi     245              [OK]
-# consol/ubuntu-xfce-vnc            Ubuntu container with "headless" VNC session     214              [OK]
-# ubuntu-upstart                    Upstart is an event-based replacement for th     107    [OK]
-# ansible/ubuntu14.04-ansible       Ubuntu 14.04 LTS with ansible                   98               [OK]
-# neurodebian                       NeuroDebian provides neuroscience research s     68     [OK]
-# ubuntu-debootstrap                debootstrap --variant=minbase --components=m     44     [OK]
+# NAME                           DESCRIPTION                                  STARS  OFFICIAL AUTOMATED
+# ubuntu                         Ubuntu is a Debian-based Linux operating sys 10749  [OK]
+# dorowu/ubuntu-desktop-lxde-vnc Docker image to provide HTML5 VNC interface  414             [OK]
+# rastasheep/ubuntu-sshd         Dockerized SSH service, built on top of offi 245             [OK]
+# consol/ubuntu-xfce-vnc         Ubuntu container with "headless" VNC session 214             [OK]
+# ubuntu-upstart                 Upstart is an event-based replacement for th 107    [OK]
+# ansible/ubuntu14.04-ansible    Ubuntu 14.04 LTS with ansible                98              [OK]
+# neurodebian                    NeuroDebian provides neuroscience research s 68     [OK]
+# ubuntu-debootstrap             debootstrap --variant=minbase --components=m 44     [OK]
 
 docker login
 # Login with your Docker ID to push and pull images from Docker Hub. If you do not have a Docker ID, head over to https://hub.docker.com to create one.
@@ -241,9 +241,9 @@ docker logs -f nervous_lamarr
 docker restart nervous_lamarr
 # nervous_lamarr
 docker ps -a
-# CONTAINER ID    IMAGE    COMMAND              CREATED           STATUS          PORTS                  NAMES
-# 89d48b6635c3    httpd    "httpd-foreground"   36 minutes ago    Up 3 seconds    0.0.0.0:8080->80/tcp   nervous_lamarr
-# 357e2aafd0d3    httpd    "httpd-foreground"   40 minutes ago    Up 40 minutes   0.0.0.0:80->80/tcp     gallant_lewin
+# CONTAINER ID IMAGE COMMAND            CREATED        STATUS        PORTS                NAMES
+# 89d48b6635c3 httpd "httpd-foreground" 36 minutes ago Up 3 seconds  0.0.0.0:8080->80/tcp nervous_lamarr
+# 357e2aafd0d3 httpd "httpd-foreground" 40 minutes ago Up 40 minutes 0.0.0.0:80->80/tcp   gallant_lewin
 docker restart -t 5 nervous_lamarr
 # nervous_lamarr
 

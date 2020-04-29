@@ -7,8 +7,11 @@
 \begin{frame}{Docker default bridge}
     \begin{itemize}
         \item What if we have an application with more than one container.
+        \pause
         \item Ex; WordPress rich content management system uses apache httpd and mysql servers.
+        \pause
         \item \texttt{-e, --env list} Set environment variables.
+        \pause
         \lstinputlisting[language=bash, linerange={329-334}]{docker/shell-samples.sh}
     \end{itemize}
 \end{frame}
@@ -24,9 +27,13 @@
 \begin{frame}{User-defined bridge}
     \begin{itemize}
         \item User-defined bridges provide automatic DNS resolution between containers.
+        \pause
         \item User-defined bridges provide better isolation.
+        \pause
         \item Containers can be attached and detached from user-defined networks on the fly.
+        \pause
         \item Each user-defined network creates a configurable bridge.
+        \pause
         \item Linked containers on the default bridge network share environment variables.
     \end{itemize}
 \end{frame}
@@ -35,10 +42,15 @@
 \begin{frame}{Docker Network Commands}
     \begin{itemize}
         \item \texttt{create} Create a network.
+        \pause
         \item \texttt{ls} List networks.
+        \pause
         \item \texttt{connect} Connect a container to a network.
+        \pause
         \item \texttt{inspect} Display detailed information on one or more networks.
+        \pause
         \item \texttt{rm} Deletes one or more networks.
+        \pause
         \lstinputlisting[language=bash, linerange={336-344}]{docker/shell-samples.sh}
     \end{itemize}
 \end{frame}
